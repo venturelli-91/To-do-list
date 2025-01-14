@@ -21,11 +21,13 @@ const TodoForm: React.FC<TodoFormState> = ({addTodo}) => {
         <form className="todo-form" onSubmit={handleSubmit}>
             
             <input type="text" 
+            className="bg-gray-100 p-5 mt-3 rounded-2xl text-center text-yellow-950"
             placeholder="Qual é a tarefa?" 
             value={value} 
             onChange={(event) => setValue(event.target.value)}/>
-            
-            <button type="submit" className="todo-button">Enviar Tarefa</button>
+            <div className="font-extrabold p-4">
+            <button type="submit"
+            >Adicionar Tarefa</button></div>
         </form>
     )
 }

@@ -3,24 +3,16 @@
 @tailwind utilities; 
 
 
-
-
-
-
-/*:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.title {
+  @apply text-orange-800 p-5 m-10 font-extrabold underline text-center bg-blue-200 w-1/6 mx-auto
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.todo-form {
+  @apply rounded-2xl bg-green-300 p-5 mt-3 text-center font-extrabold text-white 
+  mx-auto w-1/6
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}*/
+.task {
+  @apply rounded-2xl bg-violet-400 p-5 mt-10 text-left font-extrabold text-white  
+  mx-auto w-1/6
+}

@@ -37,7 +37,7 @@ const TodoWrap: React.FC = () => {
 
     return(
         <div className="">
-            <h1>To-do-List!</h1>
+            <h1 className="title rounded-2xl">To-do-List!</h1>
             <TodoForm addTodo={addTodo} />
             {todos.map((todo,index) => (
                 <Todo task={todo} key={index} 
