@@ -1,18 +1,3 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
-
-
-.title {
-  @apply text-orange-800 p-5 m-10 font-extrabold underline text-center bg-blue-200 w-1/6 mx-auto
-}
-
-.todo-form {
-  @apply rounded-2xl bg-green-300 p-5 mt-3 text-center font-extrabold text-white 
-  mx-auto w-1/6
-}
-
-.task {
-  @apply rounded-2xl bg-violet-400 p-5 mt-10 text-left font-extrabold text-white  
-  mx-auto w-1/6
-}
+@tailwind utilities;
