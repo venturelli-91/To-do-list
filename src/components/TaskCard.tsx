@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card } from "flowbite-react";
+import { Alert, Button, Card, MegaMenu } from "flowbite-react";
 import TaskModal from "./TaskModal";
 
 interface CardProps {
@@ -18,6 +18,8 @@ const TaskCard = () => {
 		},
 	]);
 
+	const [successMessage, setSuccessMessage] = useState<string | null>(null);
+	const [deleteMessage, setDeleteMessage] = useState<string | null>(null);
 	const [openModal, setOpenModal] = useState(false);
 
 	const addTarefa = (title: string, description: string) => {
@@ -27,40 +29,58 @@ const TaskCard = () => {
 			description,
 		};
 		setTarefas([...tarefas, novaTarefa]);
+		setSuccessMessage("Tarefa adicionada com sucesso!");
+		setTimeout(() => setSuccessMessage(null), 4000);
 	};
 
 	const deletarTarefa = (id: number) => {
 		setTarefas(tarefas.filter((tarefa) => tarefa.id !== id));
+		setDeleteMessage("Tarefa removida!");
+		setTimeout(() => setDeleteMessage(null), 4000);
 	};
 
 	return (
 		<>
-			<div>
-				<Button
-					onClick={() => setOpenModal(true)}
-					color="green">
-					Adicionar Tarefa
-				</Button>
+			<MegaMenu>
+				<div className="flex justify-center items-center w-full m-4">
+					<Button
+						onClick={() => setOpenModal(true)}
+						color="green">
+						Adicionar Tarefa
+					</Button>
 
-				<TaskModal
-					openModal={openModal}
-					setOpenModal={setOpenModal}
-					addTarefa={addTarefa}
-				/>
-
-				<div>
-					{tarefas.map((tarefa) => (
-						<Card key={tarefa.id}>
-							<h4 className="font-bold text-pink-600">{tarefa.title}</h4>
-							<p className="font-bold text-purple-900">{tarefa.description}</p>
-							<Button
-								color="pink"
-								onClick={() => deletarTarefa(tarefa.id)}>
-								Remover Tarefa
-							</Button>
-						</Card>
-					))}
+					<TaskModal
+						openModal={openModal}
+						setOpenModal={setOpenModal}
+						addTarefa={addTarefa}
+					/>
 				</div>
+			</MegaMenu>
+
+			{successMessage && (
+				<Alert color="green">
+					<span>{successMessage}</span>
+				</Alert>
+			)}
+
+			{deleteMessage && (
+				<Alert color="red">
+					<span>{deleteMessage}</span>
+				</Alert>
+			)}
+
+			<div>
+				{tarefas.map((tarefa) => (
+					<Card key={tarefa.id}>
+						<h4 className="font-bold text-yellow-600">{tarefa.title}</h4>
+						<p className="font-bold text-purple-300">{tarefa.description}</p>
+						<Button
+							color="pink"
+							onClick={() => deletarTarefa(tarefa.id)}>
+							Remover Tarefa
+						</Button>
+					</Card>
+				))}
 			</div>
 		</>
 	);
