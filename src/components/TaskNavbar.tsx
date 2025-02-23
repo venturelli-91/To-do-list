@@ -1,36 +1,20 @@
-import Link from "next/link";
 import { Navbar } from "flowbite-react";
 import React from "react";
 
-const TaskNavbar = () => {
+export default function TaskNavbar() {
 	return (
 		<Navbar
 			fluid
-			rounded>
-			<Navbar.Brand
-				as={Link}
-				href="https://flowbite-react.com">
-				<span className="self-center whitespace-nowrap text-xl font-bold dark:text-white">
-					To-do List
-				</span>
-			</Navbar.Brand>
-			<Navbar.Toggle />
-			<Navbar.Collapse>
-				<Navbar.Link
-					href="#"
-					active>
-					Home
-				</Navbar.Link>
-				<Navbar.Link
-					as={Link}
-					href="#">
-					About
-				</Navbar.Link>
-				<Navbar.Link href="#">GitHub</Navbar.Link>
-				<Navbar.Link href="#">Contact</Navbar.Link>
-			</Navbar.Collapse>
+			className="border-b">
+			<div className="pl-20">
+				{" "}
+				{/* Espaço para o botão do menu */}
+				<Navbar.Brand href="/">
+					<span className="text-xl font-semibold dark:text-white">
+						Todo List
+					</span>
+				</Navbar.Brand>
+			</div>
 		</Navbar>
 	);
-};
-
-export default TaskNavbar;
+}
