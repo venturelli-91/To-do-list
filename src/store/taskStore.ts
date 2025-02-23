@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface Task {
+export interface Task {
 	id: string;
 	title: string;
 	completed: boolean;
@@ -9,21 +9,27 @@ interface Task {
 
 interface TaskStore {
 	tasks: Task[];
+	showSuccessToast: boolean;
+	showDeleteToast: boolean;
 	addTask: (title: string) => void;
 	toggleTask: (id: string) => void;
 	deleteTask: (id: string) => void;
+	hideToasts: () => void;
 }
 
-export const useTaskStore = create(
+const useTaskStore = create(
 	persist<TaskStore>(
 		(set) => ({
 			tasks: [],
+			showSuccessToast: false,
+			showDeleteToast: false,
 			addTask: (title) =>
 				set((state) => ({
 					tasks: [
 						...state.tasks,
 						{ id: crypto.randomUUID(), title, completed: false },
 					],
+					showSuccessToast: true,
 				})),
 			toggleTask: (id) =>
 				set((state) => ({
@@ -34,6 +40,12 @@ export const useTaskStore = create(
 			deleteTask: (id) =>
 				set((state) => ({
 					tasks: state.tasks.filter((task) => task.id !== id),
+					showDeleteToast: true,
+				})),
+			hideToasts: () =>
+				set(() => ({
+					showSuccessToast: false,
+					showDeleteToast: false,
 				})),
 		}),
 		{
@@ -41,3 +53,6 @@ export const useTaskStore = create(
 		}
 	)
 );
+
+export { useTaskStore };
+export type { TaskStore };

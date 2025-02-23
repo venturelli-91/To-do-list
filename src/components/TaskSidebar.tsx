@@ -43,10 +43,10 @@ export default function TaskSidebar({
 		<>
 			<button
 				onClick={toggleSidebar}
-				className={`fixed top-3.5 left-4 z-50 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-opacity duration-300 ${
+				className={`fixed top-1.5 left-4 z-50 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-opacity duration-300 ${
 					isOpen ? "opacity-0" : "opacity-100"
 				}`}>
-				<HiMenuAlt1 className="w-6 h-6" />
+				<HiMenuAlt1 className="w-6 h-6 dark:text-white" />
 			</button>
 			<div
 				className={`fixed transition-transform duration-300 ease-in-out ${
@@ -62,17 +62,17 @@ export default function TaskSidebar({
 							<Sidebar.Item
 								href="#"
 								icon={HiChartPie}>
-								Dashboard
-							</Sidebar.Item>
-							<Sidebar.Item
-								href="#"
-								icon={HiInbox}>
 								Tarefas
 							</Sidebar.Item>
 							<Sidebar.Item
 								href="#"
+								icon={HiInbox}>
+								About Us
+							</Sidebar.Item>
+							<Sidebar.Item
+								href="#"
 								icon={HiTable}>
-								Categorias
+								Contact
 							</Sidebar.Item>
 						</Sidebar.ItemGroup>
 					</Sidebar.Items>
