@@ -7,8 +7,6 @@ export default function TaskNavbar() {
 			fluid
 			className="border-b">
 			<div className="pl-20">
-				{" "}
-				{/* Espaço para o botão do menu */}
 				<Navbar.Brand href="/">
 					<span className="text-xl font-semibold dark:text-white">
 						Todo List

@@ -39,7 +39,14 @@ export function TaskProvider({ children }: { children: React.ReactNode }) {
 
 	useEffect(() => {
 		const saved = localStorage.getItem("tasks");
-		if (saved) dispatch({ type: "INIT", payload: JSON.parse(saved) });
+		if (saved) {
+			try {
+				const parsedTasks = JSON.parse(saved);
+				dispatch({ type: "INIT", payload: parsedTasks });
+			} catch (error) {
+				console.error("Erro ao carregar tarefas do localStorage:", error);
+			}
+		}
 	}, []);
 
 	useEffect(() => {
